@@ -76,27 +76,31 @@ Icon="jdownloader.png"
             <td></td>
         </tr>
         <tr class="dash_jdownloaderstatus_toggle">
-        <table>
-            <thead>
-                <tr>
-                    <th width="40%">_(Name)_</th>
-                    <th align="center">_(Status)_</th>
-                    <th align="right">_(Size)_</th>
-                    <th>_(Progress)_</th>
-                </tr>
-            </thead>
-            <tbody style="display: table-row-group;" id="jdownloader_statuses">
-                <!-- <tr id="retrieving_streams">
-                </tr> -->
-                <tr style="display:table-row;" id="' + stream.id + '">
-                    <td width="40%" style="padding: 0px;"><p class="status-text" title="Avengers.mkv">Avengers.mkv</p></td>
-                    <td align="right" style="padding: 0px;"><p class="status-text" title="Downloading">Downloading</p></td>
-                    <td align="right" style="padding: 0px;"><p class="status-text" title="3.2Gig">3.2Gig</p></td>
-                    <td style="padding: 0px;"><span class='jd-progress load'></span><div class='usage-disk sys'><span class='jd-progressbar' style='width: 23.5%'></span><span></span></div></td>
-                </tr>
-            </tbody>
-        </table>
-
+            <td></td>
+            <td colspan="3" class="top">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="40%">_(Name)_</th>
+                            <th align="center">_(Status)_</th>
+                            <th align="right">_(Size)_</th>
+                            <th>_(Progress)_</th>
+                        </tr>
+                    </thead>
+                    <tbody style="display: table-row-group;" id="jdownloader_statuses">
+                        <!-- <tr id="retrieving_streams">
+                        </tr> -->
+                        <tr style="display:table-row;" id="' + stream.id + '">
+                            <td width="40%" style="padding: 0px;"><p class="status-text" title="Avengers.mkv">Avengers.mkv</p></td>
+                            <td align="right" style="padding: 0px;"><p class="status-text" title="Downloading">Downloading</p></td>
+                            <td align="right" style="padding: 0px;"><p class="status-text" title="3.2Gig">3.2Gig</p></td>
+                            <td><span class="jd-util load">15%</span><div class="usage-disk sys"><span class="jd-utilbar" style="width: 15%;"></span><span></span></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+            </td>
+            <td></td>
         </tr>
     </tbody>
 </table>
