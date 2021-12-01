@@ -57,7 +57,7 @@
 //     });
 // };
 
-const gpustat_dash = () => {
+const jdownloaderstatus_dash = () => {
 	// append data from the table into the correct one
 	$('#db-box1').append($('.dash_gpustat').html());
 

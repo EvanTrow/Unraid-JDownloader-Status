@@ -88,5 +88,5 @@ Icon="jdownloader.png"
 <script type="text/javascript">
     // $(gpustat_status);
 
-    $(gpustat_dash);
+    $(jdownloaderstatus_dash);
 </script>
