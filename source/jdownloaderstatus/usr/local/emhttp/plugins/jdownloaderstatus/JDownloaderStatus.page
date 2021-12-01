@@ -51,9 +51,15 @@ Icon="jdownloader.png"
     @import url("/plugins/jdownloaderstatus/css/style.css");
 </style>
 
-<table id='db-box1' class='dash_jdownloaderstatus dashboard box1' style='display:none'>
-    <thead sort='953'><tr class='hidden'><td></td><td colspan='3'></td><td></td></tr></thead>
-    <tbody sort='953' class='sortable'>
+<table cellspacing="0" cellpadding="0" id="db-box1" class="dash_jdownloaderstatus_container dashboard box1" style="display:none">
+    <thead sort="10">
+        <tr class="hidden">
+            <td></td>
+            <td colspan="3"></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody id="dash_jdownloaderstatus_box" class="sortable" sort="10">
         <tr>
             <td></td>
             <td class='next' colspan='3'>
