@@ -1,92 +1,80 @@
 Menu="Dashboard"
-Icon="film"
-Tag="film"
+Icon="jdownloader.png"
 ---
 <?php
-    $plugin = "jdownloaderstatus";
-?>
----
-<?php
-    $dashboard_widget_pos = 1;
-    $dashboard_widget_colspan = 3;
-    $streamCount = 0;
+    /*
+      MIT License
+
+      Copyright (c) 2020-2021 b3rs3rk
+
+      Permission is hereby granted, free of charge, to any person obtaining a copy
+      of this software and associated documentation files (the "Software"), to deal
+      in the Software without restriction, including without limitation the rights
+      to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+      copies of the Software, and to permit persons to whom the Software is
+      furnished to do so, subject to the following conditions:
+
+      The above copyright notice and this permission notice shall be included in all
+      copies or substantial portions of the Software.
+
+      THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+      IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+      FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+      AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+      LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+      OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+      SOFTWARE.
+    */
+
+    $jdownloaderstatus_cfg = parse_plugin_cfg('jdownloader', true);
+
+    // $gpu_nv = $gpu_intel = $gpu_amd = $gpu_unknown = false;
+
+    // switch ($jdownloaderstatus_cfg['VENDOR']) {
+    //     case "nvidia":
+    //         $gpu_nv = true;
+    //         break;
+    //     case "intel":
+    //         $gpu_intel = true;
+    //         break;
+    //     case "amd":
+    //         $gpu_amd = true;
+    //         break;
+    //     default:
+    //         // If vendor isn't set the config hasn't been saved, don't render the plugin
+    //         $gpu_unknown = true;
+    //         $unknown_msg = "Default vendor set - Change vendor in jdownloaderstatus settings page and apply.";
+    // }
 ?>
 
 <style type="text/css">
-        .dash_jdownloaderstatus_toggle{display:none}
-        .dash_jdownloaderstatus_toggle tbody td {
-            padding-top: 0px;
-            padding-bottom: 0px;
-        }
+    @import url("/plugins/jdownloaderstatus/css/style.css");
 </style>
-<table cellspacing="0" cellpadding="0" id="db-box<?php echo $dashboard_widget_pos ?>" class="jdownloader_status_container dashboard box<?php echo $dashboard_widget_pos ?>" style="display:none">
-        <thead sort="10">
-            <tr class="hidden">
-                <td></td>
-                <td colspan="3"></td>
-                <td></td>
-            </tr>
-        </thead>
-        <tbody id="jdownloader_status_dash_box" class="sortable" sort="10">
-            <tr>
-                <td></td>
-                <td class="next" colspan="<?php echo $dashboard_widget_colspan ?>" style="white-space: no-wrap;">
-                    <i style="font-size:32px;vertical-align:top;" class="fa fa-film icon"></i>
-                        <div class="section" style="line-height:2rem;">_(JDownloader Status)_<br><span><span id="jdownloaderstatus_count">0</span> _(Active Stream(s))_</span><br><br></div>
-                        <i class="fa fa-fw chevron mt0" id="dash_jdownloaderstatus" onclick="toggleChevron('dash_jdownloaderstatus',0)"></i>
-                        <a href="/Settings/JDownloaderStatusSettings" title="_(JDownloader Status Setup page)_"><i class="fa fa-fw fa-cog chevron mt0"></i></a>
-                </td>
-                <td></td>
-            </tr>
-            <tr class="dash_jdownloaderstatus">
-                <td></td>
-                <td colspan="<?php echo $dashboard_widget_colspan ?>" class="top">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th width="40%">_(Name)_</th>
-                                    <th align="center">_(Status)_</th>
-                                    <th>_(User)_</th>
-                                    <th align="right">_(Time)_</th>
-                                </tr>
-                            </thead>
-                            <tbody style="display: table-row-group;" id="jdownloaderstatus_streams">
-                                <tr id="retrieving_streams">
-                                    <td colspan="4"><p align="center" style="font-style:italic;">Loading...</p></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                </td>
-                <td></td>
-            </tr>
-        </tbody>
+
+<table id='db-box1' class='dash_jdownloaderstatus dashboard box1' style='display:none'>
+    <thead sort='953'><tr class='hidden'><td></td><td colspan='3'></td><td></td></tr></thead>
+    <tbody sort='953' class='sortable'>
+        <tr>
+            <td></td>
+            <td class='next' colspan='3'>
+                <i class='icon-hardware'></i>
+                <div class='section'>JDownloader Status<br>
+                    <span id='load'>Load: <span class='gpu-util'>0</span></span>
+                    <span>Temperature: <span class='gpu-temp'>1</span></span>
+                    &emsp;&ensp;<span>Processes: <span class='gpu-sessions'>2</span></span>
+                </div>
+                <i class='fa fa-fw chevron mt0' id='dash_jdownloaderstatus_toggle' onclick='toggleChevron("dash_jdownloaderstatus_toggle",0)'></i>
+                <a href='/Settings/JDownloaderStatusSettings' id='dash_jdownloaderstatus_settings' title='JDownloader Status Settings'><i class='fa fa-fw fa-cog chevron mt0'></i></a>
+                <br><br>
+            </td>
+            <td></td>
+        </tr>
+        <tr class="dash_jdownloaderstatus_toggle gpu-enviro">
+            <td></td>
+            <td><span class='gpu-vendor'></span>&nbsp;<span class='gpu-name'></span></td>
+            <td>&emsp;&ensp;<span id='gpu-pciegen'>PCIe Gen (Max): <span class='gpu-pciegen'>1</span>&nbsp;(<span class='gpu-pciegenmax'>2</span>)</span></td>
+            <td>&emsp;&ensp;<span id='gpu-pciewidth'>Lanes (Max): <span class='gpu-pciewidth'>3</span>&nbsp;(<span class='gpu-pciewidthmax'>4</span>)</span></td>
+            <td></td>
+        </tr>
+    </tbody>
 </table>
-
-<style>
-p.jdownloaderstatus-title {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 200px;
-    padding: 0 0 0 0;
-    margin: 0 0 10px 0;
-}
-
-p.jdownloaderstatus-user {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 104px;
-    padding: 0 0 0 0;
-    margin: 0 0 10px 0;
-}
-
-p.jdownloaderstatus-time {
-    padding: 0 0 0 0;
-    margin: 0 0 10px 0;
-    font-size:10px;
-    width: 125px;
-    text-align: right;
-}
-</style>
-<?endif;?>
