@@ -35,14 +35,26 @@ Title="JDownloader Status"
 ?>
 
 <h2><b>Settings</b></h2>
+<form markdown="1" name="jdownloader" method="POST" action="/update.php" target="progressFrame">
+  <p>
+    <input type="hidden" name="#file" value="jdownloader/jdownloader.cfg">
+  </p>
+  <dt>Email:</dt>
+  <dl>
+    <input type="email" id="email" class="setting email" value="" />
+  </dl>
 
+  <dt>Password:</dt>
+  <dl>
+    <input type="password" id="password" class="setting password" value="" />
+  </dl>
 
 <br><br><br>
 
 : <input id="btnApply" type="submit" value="Apply"><input type="button" value="Done" onClick="done()">
 
 <br><br><br>
-Note: Where noted, not all metrics are provided by the vendor utilities and this plugin cannot magically make that work.
+<!-- Note: Where noted, not all metrics are provided by the vendor utilities and this plugin cannot magically make that work.
 <br><br><br>
-**Metric is available for discrete AMD GPUs and not APUs
+**Metric is available for discrete AMD GPUs and not APUs -->
 </form>
