@@ -1,6 +1,6 @@
 <?xml version='1.0' standalone='yes'?>
 <!DOCTYPE PLUGIN [
-<!ENTITY name      "JDownloaderStatus">
+<!ENTITY name      "jdownloaderstatus">
 <!ENTITY author    "Evan Trowbridge">
 <!ENTITY version   "2021.11.30">
 <!ENTITY launch    "Settings/JDownloaderStatusSettings">
