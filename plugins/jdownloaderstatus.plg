@@ -5,8 +5,8 @@
   <!ENTITY author     "Evan Trowbridge">
   <!ENTITY version    "2021.11.30">
   <!ENTITY launch     "Settings/JDownloaderStatus">
-  <!ENTITY github    "EvanTrow/customtab">
-  <!ENTITY pluginURL "https://raw.githubusercontent.com/&github;/master/plugins/&name;.plg">
+  <!ENTITY github    "EvanTrow/Unraid-JDownloader-Status">
+  <!ENTITY pluginURL "https://raw.githubusercontent.com/&github;/main/plugins/&name;.plg">
   <!ENTITY emhttp     "/usr/local/emhttp/plugins/&name;">
   <!ENTITY plgPATH    "/boot/config/plugins/&name;">
   <!ENTITY md5        "1eee585dbc7d264d1645cffd25d1d35c">
@@ -50,7 +50,7 @@
 
     <!-- Install Package-->
     <FILE Name="/boot/config/plugins/&name;/&name;-&version;-x86_64-1.txz" Run="upgradepkg --install-new">
-        <URL>https://raw.github.com/&github;/master/archive/&name;-&version;-x86_64-1.txz</URL>
+        <URL>https://raw.github.com/&github;/main/archive/&name;-&version;-x86_64-1.txz</URL>
         <MD5>&md5;</MD5>
     </FILE>
 
