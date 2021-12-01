@@ -52,22 +52,22 @@ Icon="jdownloader.png"
 </style>
 
 <table cellspacing="0" cellpadding="0" id="db-box1" class="dash_jdownloaderstatus_container dashboard box1" style="display:none">
-    <thead sort="10">
+    <thead sort="9">
         <tr class="hidden">
             <td></td>
             <td colspan="3"></td>
             <td></td>
         </tr>
     </thead>
-    <tbody id="dash_jdownloaderstatus_box" class="sortable" sort="10">
+    <tbody id="dash_jdownloaderstatus_box" class="sortable" sort="9">
         <tr>
             <td></td>
             <td class='next' colspan='3'>
                 <i style="font-size:32px;vertical-align:top;" class="fa fa-download icon"></i>
                 <div class='section'>JDownloader Status<br>
-                    <span id='load'>Load: <span class='gpu-util'>0</span></span>
-                    <span>Temperature: <span class='gpu-temp'>1</span></span>
-                    &emsp;&ensp;<span>Processes: <span class='gpu-sessions'>2</span></span>
+                    <span>Status: <span class='jd-sys-status'>Started</span></span>
+                    <span>Average: <span class='jd-sys-avg'>0 B/s</span></span>
+                    <span>Current: <span class='jd-sys-avg'>0 B/s</span></span>
                 </div>
                 <i class='fa fa-fw chevron mt0' id='dash_jdownloaderstatus_toggle' onclick='toggleChevron("dash_jdownloaderstatus_toggle",0)'></i>
                 <a href='/Settings/JDownloaderStatusSettings' id='dash_jdownloaderstatus_settings' title='JDownloader Status Settings'><i class='fa fa-fw fa-cog chevron mt0'></i></a>
@@ -75,15 +75,42 @@ Icon="jdownloader.png"
             </td>
             <td></td>
         </tr>
-        <tr class="dash_jdownloaderstatus_toggle gpu-enviro">
-            <td></td>
-            <td><span class='gpu-vendor'></span>&nbsp;<span class='gpu-name'></span></td>
-            <td>&emsp;&ensp;<span id='gpu-pciegen'>PCIe Gen (Max): <span class='gpu-pciegen'>1</span>&nbsp;(<span class='gpu-pciegenmax'>2</span>)</span></td>
-            <td>&emsp;&ensp;<span id='gpu-pciewidth'>Lanes (Max): <span class='gpu-pciewidth'>3</span>&nbsp;(<span class='gpu-pciewidthmax'>4</span>)</span></td>
-            <td></td>
+        <tr class="dash_jdownloaderstatus_toggle">
+        <table>
+            <thead>
+                <tr>
+                    <th width="40%">_(Name)_</th>
+                    <th align="center">_(Status)_</th>
+                    <th align="right">_(Size)_</th>
+                    <th>_(Progress)_</th>
+                </tr>
+            </thead>
+            <tbody style="display: table-row-group;" id="jdownloader_statuses">
+                <!-- <tr id="retrieving_streams">
+                </tr> -->
+                <tr style="display:table-row;" id="' + stream.id + '">
+                    <td width="40%" style="padding: 0px;"><p class="status-text" title="Avengers.mkv">Avengers.mkv</p></td>
+                    <td align="right" style="padding: 0px;"><p class="status-text" title="Downloading">Downloading</p></td>
+                    <td align="right" style="padding: 0px;"><p class="status-text" title="3.2Gig">3.2Gig</p></td>
+                    <td style="padding: 0px;"><span class='jd-progress load'></span><div class='usage-disk sys'><span class='jd-progressbar' style='width: 23.5%'></span><span></span></div></td>
+                </tr>
+            </tbody>
+        </table>
+
         </tr>
     </tbody>
 </table>
+
+<style>
+p.status-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
+    padding: 0 0 0 0;
+    margin: 0 0 10px 0;
+}
+</style>
 
 <script type="text/javascript" src="/plugins/jdownloaderstatus/scripts/jdownloaderstatus.js"></script>
 <script type="text/javascript">

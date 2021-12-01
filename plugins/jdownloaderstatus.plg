@@ -1,14 +1,15 @@
 <?xml version='1.0' standalone='yes'?>
 <!DOCTYPE PLUGIN [
-<!ENTITY name      "jdownloaderstatus">
+<!ENTITY name      "JDownloader Status">
+<!ENTITY codename  "jdownloaderstatus">
 <!ENTITY author    "Evan Trowbridge">
 <!ENTITY version   "2021.11.30">
 <!ENTITY launch    "Settings/JDownloaderStatusSettings">
 <!ENTITY github    "EvanTrow/Unraid-JDownloader-Status">
-<!ENTITY pluginURL "https://raw.githubusercontent.com/&github;/main/plugins/&name;.plg">
-<!ENTITY plgNAME   "&name;-&version;-x86_64">
-<!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
-<!ENTITY plgPATH   "/boot/config/plugins/&name;">
+<!ENTITY pluginURL "https://raw.githubusercontent.com/&github;/main/plugins/&codename;.plg">
+<!ENTITY plgNAME   "&codename;-&version;-x86_64">
+<!ENTITY emhttp    "/usr/local/emhttp/plugins/&codename;">
+<!ENTITY plgPATH   "/boot/config/plugins/&codename;">
 ]>
 
 <PLUGIN
@@ -87,8 +88,8 @@ fi
 </FILE> -->
 
  <!-- The 'source' file. -->
- <FILE Name="/boot/config/plugins/&name;/&name;-&version;-x86_64-1.txz" Run="upgradepkg --install-new">
-    <URL>https://raw.github.com/&github;/main/archive/&name;-&version;-x86_64-1.txz</URL>
+ <FILE Name="/boot/config/plugins/&codename;/&codename;-&version;-x86_64-1.txz" Run="upgradepkg --install-new">
+    <URL>https://raw.github.com/&github;/main/archive/&codename;-&version;-x86_64-1.txz</URL>
  </FILE>
 
  <!-- Install default plugin cfg  -->
