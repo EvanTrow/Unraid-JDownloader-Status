@@ -84,3 +84,9 @@ Icon="jdownloader.png"
         </tr>
     </tbody>
 </table>
+<script type="text/javascript" src="/plugins/jdownloaderstatus/scripts/jdownloaderstatus.js"></script>
+<script type="text/javascript">
+    // $(gpustat_status);
+
+    $(gpustat_dash);
+</script>
