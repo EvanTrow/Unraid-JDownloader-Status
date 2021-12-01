@@ -4,6 +4,7 @@
 <!ENTITY author    "Evan Trowbridge">
 <!ENTITY version   "2021.11.30">
 <!ENTITY launch    "Settings/JDownloaderStatusSettings">
+<!ENTITY github    "EvanTrow/Unraid-JDownloader-Status">
 <!ENTITY pluginURL "https://raw.githubusercontent.com/&github;/main/plugins/&name;.plg">
 <!ENTITY plgNAME   "&name;-&version;-x86_64">
 <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
