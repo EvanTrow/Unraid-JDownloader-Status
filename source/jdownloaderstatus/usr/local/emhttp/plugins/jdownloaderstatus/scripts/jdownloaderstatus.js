@@ -9,12 +9,10 @@
 //                     $('.gpu-powerbar').removeAttr('style').css('width', parseInt(data["power"].replace("W","") / data["powermax"] * 100) + "%");
 //                     $('.gpu-rxutilbar').removeAttr('style').css('width', parseInt(data["rxutil"] / data["pciemax"] * 100) + "%");
 //                     $('.gpu-txutilbar').removeAttr('style').css('width', parseInt(data["txutil"] / data["pciemax"] * 100) + "%");
-
 //                     let nvidiabars = ['util', 'memutil', 'encutil', 'decutil', 'fan'];
 //                     nvidiabars.forEach(function (metric) {
 //                         $('.gpu-'+metric+'bar').removeAttr('style').css('width', data[metric]);
 //                     });
-
 //                     if (data["appssupp"]) {
 //                         data["appssupp"].forEach(function (app) {
 //                             if (data[app + "using"]) {
