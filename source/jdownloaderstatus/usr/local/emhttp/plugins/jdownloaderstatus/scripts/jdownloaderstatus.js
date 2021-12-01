@@ -59,10 +59,10 @@
 
 const jdownloaderstatus_dash = () => {
 	// append data from the table into the correct one
-	$('#db-box1').append($('.dash_gpustat').html());
+	$('#db-box1').append($('.dash_jdownloaderstatus_container').html());
 
 	// reload toggle to get the correct state
-	toggleView('dash_gpustat_toggle', true);
+	toggleView('dash_jdownloaderstatus_toggle', true);
 
 	// reload sorting to get the stored data (cookie)
 	sortTable($('#db-box1'), $.cookie('db-box1'));
