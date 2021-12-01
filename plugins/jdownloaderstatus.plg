@@ -1,93 +1,142 @@
 <?xml version='1.0' standalone='yes'?>
-
 <!DOCTYPE PLUGIN [
-  <!ENTITY name       "jdownloaderstatus">
-  <!ENTITY author     "Evan Trowbridge">
-  <!ENTITY version    "2021.11.30">
-  <!ENTITY launch     "Settings/JDownloaderStatus">
-  <!ENTITY github    "EvanTrow/Unraid-JDownloader-Status">
-  <!ENTITY pluginURL "https://raw.githubusercontent.com/&github;/main/plugins/&name;.plg">
-  <!ENTITY emhttp     "/usr/local/emhttp/plugins/&name;">
-  <!ENTITY plgPATH    "/boot/config/plugins/&name;">
-  <!ENTITY md5        "1eee585dbc7d264d1645cffd25d1d35c">
+<!ENTITY name      "JDownloaderStatus">
+<!ENTITY author    "Evan Trowbridge">
+<!ENTITY version   "2021.11.30">
+<!ENTITY launch    "Settings/JDownloaderStatusSettings">
+<!ENTITY pluginURL "https://raw.githubusercontent.com/&github;/main/plugins/&name;.plg">
+<!ENTITY plgNAME   "&name;-&version;-x86_64">
+<!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
+<!ENTITY plgPATH   "/boot/config/plugins/&name;">
 ]>
 
-<PLUGIN  name="&name;"
-         author="&author;"
-         version="&version;"
-         pluginURL="&pluginURL;"
-         support="https://github.com/EvanTrow/Unraid-JDownloader-Status"
-         launch="&launch;"
-         IconFA="download"
-         icon="download">
+<PLUGIN
+    name="&name;"
+    author="&author;"
+    version="&version;"
+    min="6.7.1"
+    support="https://github.com/EvanTrow/Unraid-JDownloader-Status"
+    icon="download"
+    launch="&launch;"
+    pluginURL="&pluginURL;"
+>
 
-    <CHANGES>
-    ##&name;  
-###2021.11.30
+<!--
+  MIT License
+
+  Copyright (c) 2020-2021 b3rs3rk
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+-->
+
+<CHANGES>
+###2021-11-30
  - Initial Beta Release
-    </CHANGES>
+</CHANGES>
 
-    <FILE Name="&plgPATH;/&name;.cfg">
-      <INLINE>
-      <![CDATA[
-      HOST=""
-      TOKEN=""
-      ]]>
-      </INLINE>
-    </FILE>
+ <!-- The 'pre-install' script. -->
+<!-- <FILE Run="/bin/bash">
+<INLINE>
 
+if [ "$(which nvidia-smi 2>/dev/null)" ] || [ -d /boot/config/plugins/nvidia-driver ]; then
+    echo "********************************************************************"
+    echo
+    echo "NVIDIA vendor utility found. Continuing install."
+    echo
+    echo "********************************************************************"
+elif [ "$(which intel_gpu_top 2>/dev/null)" ] || [ -d /boot/config/plugins/intel-gpu-top ]; then
+    echo "********************************************************************"
+    echo
+    echo "Intel vendor utility found. Continuing install."
+    echo
+    echo "********************************************************************"
+elif [ "$(which radeontop 2>/dev/null)" ] || [ -d /boot/config/plugins/radeontop ]; then
+    echo "********************************************************************"
+    echo
+    echo "AMD vendor utility found. Continuing install."
+    echo
+    echo "********************************************************************"
+else
+    echo "********************************************************************"
+    echo
+    echo "No vendor utilities found.  Plugin install terminated due to failed prerequisites."
+    echo
+    echo "********************************************************************"
+    rm -rf /boot/config/plugins/&name;
+    exit 1
+fi
 
-    <!-- PRE-INSTALL SCRIPT -->
-    <!--<FILE Run="/bin/bash">
-    <INLINE>
-    # Remove old 'name' packages
-    MD5=$(md5sum &name;.txz 2>/dev/null|grep -Po '^\S+')
-    if [[ $MD5 != "&md5;" ]]; then
-        rm -f &name;*.txz
-    fi
-    </INLINE>
-    </FILE>-->
+</INLINE>
+</FILE> -->
 
-    <!-- Install Package-->
-    <FILE Name="/boot/config/plugins/&name;/&name;-&version;-x86_64-1.txz" Run="upgradepkg --install-new">
-        <URL>https://raw.github.com/&github;/main/archive/&name;-&version;-x86_64-1.txz</URL>
-        <MD5>&md5;</MD5>
-    </FILE>
+ <!-- The 'source' file. -->
+ <FILE Name="/boot/config/plugins/&name;/&name;-&version;-x86_64-1.txz" Run="upgradepkg --install-new">
+    <URL>https://raw.github.com/&github;/main/archive/&name;-&version;-x86_64-1.txz</URL>
+ </FILE>
 
-    <!-- POST-INSTALL SCRIPT -->
-    <FILE Run="/bin/bash">
-        <INLINE>
-            echo ""
-            echo "-----------------------------------------------------------"
-            echo " &name; has been installed."
-            echo " Version: &version;"
-            echo "-----------------------------------------------------------"
-            echo ""
-        </INLINE>
-    </FILE>
+ <!-- Install default plugin cfg  -->
+ <FILE Name="/boot/config/plugins/jdownloaderstatus/jdownloaderstatus.cfg">
+  <INLINE>
+   <![CDATA[
+    VENDOR=""
+    GPUID=""
+    TEMPFORMAT="C"
+    DISPCLOCKS="1"
+    DISPENCDEC="1"
+    DISPPCIUTIL="1"
+    DISPTEMP="1"
+    DISPFAN="1"
+    DISPPWRDRAW="1"
+    DISPPWRSTATE="1"
+    DISPTHROTTLE="1"
+    DISPSESSIONS="1"
+    UIREFRESH="1"
+    UIREFRESHINT="1000"
+    DISPMEMUTIL="1"
+    DISP3DRENDER="1"
+    DISPBLITTER="1"
+    DISPVIDEO="1"
+    DISPVIDENH="1"
+    DISPINTERRUPT="1"
+    DISPEVENT="1"
+    DISPVERTEX="1"
+    DISPTEXTURE="1"
+    DISPSHADEREXP="1"
+    DISPSEQUENCER="1"
+    DISPSHADERINTER="1"
+    DISPSCANCON="1"
+    DISPPRIMASSEM="1"
+    DISPDEPTHBLK="1"
+    DISPCOLORBLK="1"
+    DISPGFXTRANS="1"
+   ]]>
+  </INLINE>
+ </FILE>
 
-    <!--
-    The 'remove' script.
-    -->
-    <FILE Run="/bin/bash" Method="remove">
-        <INLINE>
-          # uninstall plugin
-	        removepkg &plgPATH;/*.txz
-
-	        rm -rf &emhttp;
-            rm -rf &plgPATH;/*.txz \
-		        &plgPATH;/*.md5
-
-            echo ""
-            echo "-----------------------------------------------------------"
-            echo " &name; has been uninstalled."
-            echo " Please reboot your server to complete uninstall this plugin."
-            echo " Version: &version;"
-            echo "-----------------------------------------------------------"
-            echo ""
-
-            exit 0
-        </INLINE>
-    </FILE>
-
+  <!-- The 'remove' script. -->
+  <FILE Run="/bin/bash" Method="remove">
+   <INLINE>
+    echo "Removing &name;..."
+    removepkg &plgPATH;/*.txz
+    rm -rf &plgPATH;
+    rm -rf &emhttp;
+    echo "&name; has been removed"
+   </INLINE>
+  </FILE>
 </PLUGIN>

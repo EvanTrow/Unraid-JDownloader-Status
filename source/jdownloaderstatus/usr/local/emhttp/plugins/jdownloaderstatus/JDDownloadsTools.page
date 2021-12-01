@@ -1,8 +1,0 @@
-Menu="SystemInformation"
-Name="JDownloader Status"
-Tag="download"
-Icon="download"
-Type="xmenu"
-Tabs="true"
-Title="JDownloader Status"
----
