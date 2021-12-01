@@ -5,14 +5,11 @@
   <!ENTITY author     "Evan Trowbridge">
   <!ENTITY version    "2021.11.30">
   <!ENTITY launch     "Settings/JDownloaderStatus">
-  <!ENTITY branch     "master">
-  <!ENTITY gitURL     "https://raw.githubusercontent.com/EvanTrow/Unraid-JDownloader-Status/&branch;">
-  <!ENTITY vnstatURL  "&gitURL;/deps/">
-  <!ENTITY pluginURL  "&gitURL;/&name;.plg">
+  <!ENTITY github    "EvanTrow/customtab">
+  <!ENTITY pluginURL "https://raw.githubusercontent.com/&github;/master/plugins/&name;.plg">
   <!ENTITY emhttp     "/usr/local/emhttp/plugins/&name;">
   <!ENTITY plgPATH    "/boot/config/plugins/&name;">
-  <!ENTITY plgNAME    "&name;-&version;-x86_64-1">
-  <!ENTITY md5        "d004dbe8f8627c2971dcc5d93835eeff">
+  <!ENTITY md5        "1eee585dbc7d264d1645cffd25d1d35c">
 ]>
 
 <PLUGIN  name="&name;"
@@ -26,8 +23,6 @@
 
     <CHANGES>
     ##&name;  
-###2021.11.30
-###2021.11.30
 ###2021.11.30
  - Initial Beta Release
     </CHANGES>
@@ -54,8 +49,8 @@
     </FILE>-->
 
     <!-- Install Package-->
-    <FILE Name="&plgPATH;/&plgNAME;.txz" Run="upgradepkg --install-new --reinstall">
-        <URL>&gitURL;/archive/&plgNAME;.txz</URL>
+    <FILE Name="/boot/config/plugins/&name;/&name;-&version;-x86_64-1.txz" Run="upgradepkg --install-new">
+        <URL>https://raw.github.com/&github;/master/archive/&name;-&version;-x86_64-1.txz</URL>
         <MD5>&md5;</MD5>
     </FILE>
 

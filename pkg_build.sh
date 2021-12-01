@@ -1,5 +1,5 @@
 #!/bin/bash
-cd src/jdownloaderstatus
+cd source/jdownloaderstatus
 # chmod 0755 -R .
 pkg_build.sh
 
