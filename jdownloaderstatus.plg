@@ -1,0 +1,110 @@
+<?xml version='1.0' standalone='yes'?>
+
+<!DOCTYPE PLUGIN [
+  <!ENTITY name       "jdownloaderstatus">
+  <!ENTITY author     "Evan Trowbridge">
+  <!ENTITY version    "2021.11.30">
+  <!ENTITY launch     "Settings/JDownloaderStatus">
+  <!ENTITY branch     "master">
+  <!ENTITY gitURL     "https://raw.githubusercontent.com/EvanTrow/Unraid-JDownloader-Status/&branch;">
+  <!ENTITY vnstatURL  "&gitURL;/deps/">
+  <!ENTITY pluginURL  "&gitURL;/&name;.plg">
+  <!ENTITY emhttp     "/usr/local/emhttp/plugins/&name;">
+  <!ENTITY plgPATH    "/boot/config/plugins/&name;">
+  <!ENTITY plgNAME    "&name;-&version;-x86_64-1">
+  <!ENTITY md5        "a6ae7b0da02396e0540250bc3f6e74a0">
+]>
+
+<PLUGIN  name="&name;"
+         author="&author;"
+         version="&version;"
+         pluginURL="&pluginURL;"
+         support="https://github.com/EvanTrow/Unraid-JDownloader-Status"
+         launch="&launch;"
+         IconFA="download"
+         icon="download">
+
+    <CHANGES>
+    ##&name;  
+###2020.05.14c
+ - Initial Beta Release
+    </CHANGES>
+
+    <FILE Name="&plgPATH;/&name;.cfg">
+      <INLINE>
+      <![CDATA[
+      HOST=""
+      TOKEN=""
+      ]]>
+      </INLINE>
+    </FILE>
+
+
+    <!-- PRE-INSTALL SCRIPT -->
+    <!--<FILE Run="/bin/bash">
+    <INLINE>
+    # Remove old 'name' packages
+    MD5=$(md5sum &name;.txz 2>/dev/null|grep -Po '^\S+')
+    if [[ $MD5 != "&md5;" ]]; then
+        rm -f &name;*.txz
+    fi
+    </INLINE>
+    </FILE>-->
+
+    <!-- Install Package-->
+    <FILE Name="&plgPATH;/&plgNAME;.txz" Run="upgradepkg --install-new --reinstall">
+        <URL>&gitURL;/archive/&plgNAME;.txz</URL>
+        <MD5>&md5;</MD5>
+    </FILE>
+
+    <!-- POST-INSTALL SCRIPT -->
+    <FILE Run="/bin/bash">
+        <INLINE>
+            <!-- WIDGET_OFF_FILE=/usr/local/emhttp/plugins/plexstreams/PlexStreams_dashboard.page.off
+            WIDGET_SETTING=`php -r 'exit(parse_ini_file("/boot/config/plugins/plexstreams/plexstreams.cfg", false)["DISPLAY_WIDGET"]);'`
+            if [[ -f "$WIDGET_OFF_FILE" || "$WIDGET_SETTING" == "0" ]]; then
+                rm /usr/local/emhttp/plugins/plexstreams/PlexStreams_dashboard.page.off
+                mv /usr/local/emhttp/plugins/plexstreams/PlexStreams_dashboard.page /usr/local/emhttp/plugins/plexstreams/PlexStreams_dashboard.page.off
+            fi
+            
+            NAV_OFF=/usr/local/emhttp/plugins/plexstreams/Plex_Streams.page.off
+            NAV_SETTING=`php -r 'exit(parse_ini_file("/boot/config/plugins/plexstreams/plexstreams.cfg", false)["DISPLAY_NAV"]);'`
+            if [[ -f "$NAV_OFF" || "$NAV_SETTING" == "0" ]]; then
+                rm /usr/local/emhttp/plugins/plexstreams/Plex_Streams.page.off
+                mv /usr/local/emhttp/plugins/plexstreams/Plex_Streams.page /usr/local/emhttp/plugins/plexstreams/Plex_Streams.page.off
+            fi -->
+
+            echo ""
+            echo "-----------------------------------------------------------"
+            echo " &name; has been installed."
+            echo " Version: &version;"
+            echo "-----------------------------------------------------------"
+            echo ""
+        </INLINE>
+    </FILE>
+
+    <!--
+    The 'remove' script.
+    -->
+    <FILE Run="/bin/bash" Method="remove">
+        <INLINE>
+          # uninstall plugin
+	        removepkg &plgPATH;/*.txz
+
+	        rm -rf &emhttp;
+            rm -rf &plgPATH;/*.txz \
+		        &plgPATH;/*.md5
+
+            echo ""
+            echo "-----------------------------------------------------------"
+            echo " &name; has been uninstalled."
+            echo " Please reboot your server to complete uninstall this plugin."
+            echo " Version: &version;"
+            echo "-----------------------------------------------------------"
+            echo ""
+
+            exit 0
+        </INLINE>
+    </FILE>
+
+</PLUGIN>

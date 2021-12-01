@@ -1,0 +1,7 @@
+Menu="PlexStreamsTools:2"
+Title="Streams"
+Markdown="false"
+---
+<?php
+include('/usr/local/emhttp/plugins/jdownloaderstatus/stream_display.php');
+?>

@@ -1,0 +1,16 @@
+Menu="Tasks:89"
+Name="Plex Streams"
+Tag="download"
+Icon="download"
+Code="f008"
+Type="xmenu"
+Tabs="false"
+---
+<script>
+    (function() {
+        window.theme = '<?php echo($display['theme']); ?>';
+        if (theme === 'azure') {
+            $('a[href="/Plex_Streams"]').parent().hover(function(){$(this).css('width','180px');},function(){$(this).css('width','40px')});
+        }
+    }());
+</script>

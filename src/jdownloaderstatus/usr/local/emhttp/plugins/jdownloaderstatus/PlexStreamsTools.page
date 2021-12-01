@@ -1,0 +1,8 @@
+Menu="SystemInformation"
+Name="Plex Streams"
+Tag="download"
+Icon="download"
+Type="xmenu"
+Tabs="true"
+Title="Plex Streams"
+---
