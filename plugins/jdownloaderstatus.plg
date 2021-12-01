@@ -127,6 +127,8 @@ fi
     DISPDEPTHBLK="1"
     DISPCOLORBLK="1"
     DISPGFXTRANS="1"
+    email=""
+    password=""
    ]]>
   </INLINE>
  </FILE>
