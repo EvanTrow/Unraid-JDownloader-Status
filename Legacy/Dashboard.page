@@ -9,27 +9,27 @@ Tag="download"
 ?>
 
 <style type="text/css">
-        .dash_plexstreams_toggle{display:none}
-        .dash_plexstreams_toggle tbody td {
+        .dash_jdownloaderstatus_toggle{display:none}
+        .dash_jdownloaderstatus_toggle tbody td {
             padding-top: 0px;
             padding-bottom: 0px;
         }
 </style>
-<table cellspacing="0" cellpadding="0" id="db-box<?php echo $dashboard_widget_pos ?>" class="dash_plexstreams dashboard box<?php echo $dashboard_widget_pos ?>" style="display:none">
+<table cellspacing="0" cellpadding="0" id="db-box<?php echo $dashboard_widget_pos ?>" class="dash_jdownloaderstatus dashboard box<?php echo $dashboard_widget_pos ?>" style="display:none">
         <thead sort="10" class="sortable">
                 <tr>
                         <td></td>
                         <td class="next" colspan="<?php echo $dashboard_widget_colspan ?>" style="white-space: no-wrap;">
                             <i style="font-size:32px;vertical-align:top;" class="fa fa-film icon"></i>
-                                <div class="section" style="line-height:2rem;">Plex Streams<br><span><span id="plexstreams_count">0</span> Active Stream(s)</span><br><br></div>
-                                <i class="fa fa-fw chevron mt0" id="dash_plexstreams_toggle" onclick="toggleChevron('dash_plexstreams_toggle',0)"></i>
-                                <a href="/Settings/PlexStreams" title="Plex Streams Setup page"><i class="fa fa-fw fa-cog chevron mt0"></i></a>
-                                <a href="/Tools/PlexStreamsTools" title="View Streams"><i class="fa fa-fw fa-film chevron mt0"></i></a>
+                                <div class="section" style="line-height:2rem;">JDownloader Status<br><span><span id="jdownloaderstatus_count">0</span> Active Stream(s)</span><br><br></div>
+                                <i class="fa fa-fw chevron mt0" id="dash_jdownloaderstatus_toggle" onclick="toggleChevron('dash_jdownloaderstatus_toggle',0)"></i>
+                                <a href="/Settings/JDownloaderStatus" title="JDownloader Status Setup page"><i class="fa fa-fw fa-cog chevron mt0"></i></a>
+                                <a href="/Tools/JDownloaderStatusTools" title="View Streams"><i class="fa fa-fw fa-film chevron mt0"></i></a>
                         </td>
                         <td></td>
                 </tr>
         </thead>
-        <tbody class="dash_plexstreams_toggle sortable" style="display:table-row-group" sort="10">
+        <tbody class="dash_jdownloaderstatus_toggle sortable" style="display:table-row-group" sort="10">
                 <tr>
                     <td></td>
                     <td colspan="<?php echo $dashboard_widget_colspan ?>" class="top">
@@ -42,7 +42,7 @@ Tag="download"
                                         <th align="right">Time</th>
                                     </tr>
                                 </thead>
-                                <tbody style="display: table-row-group;" id="plexstreams_streams">
+                                <tbody style="display: table-row-group;" id="jdownloaderstatus_streams">
                                     <tr id="retrieving_streams">
                                         <td colspan="4"><p align="center" style="font-style:italic;">Retrieving Stream Data...</p></td>
                                     </tr>
@@ -81,14 +81,14 @@ p.plexstream-time {
     text-align: right;
 }
 </style>
-<script src="/plugins/plexstreams/js/plex.js"></script>
+<script src="/plugins/jdownloaderstatus/js/plex.js"></script>
 <script async>
 $(function() {
     // append data from the table into the correct one
-    $("#db-box<?php echo $dashboard_widget_pos ?>").append($(".dash_plexstreams").html());
+    $("#db-box<?php echo $dashboard_widget_pos ?>").append($(".dash_jdownloaderstatus").html());
 
     // reload toggle to get the correct state
-    toggleView('dash_plexstreams_toggle',true);
+    toggleView('dash_jdownloaderstatus_toggle',true);
 
     // reload sorting to get the stored data (cookie)
     sortTable($('#db-box1'),$.cookie('db-box1'));

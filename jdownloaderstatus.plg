@@ -12,7 +12,7 @@
   <!ENTITY emhttp     "/usr/local/emhttp/plugins/&name;">
   <!ENTITY plgPATH    "/boot/config/plugins/&name;">
   <!ENTITY plgNAME    "&name;-&version;-x86_64-1">
-  <!ENTITY md5        "a6ae7b0da02396e0540250bc3f6e74a0">
+  <!ENTITY md5        "df96b702f1f252f99803b677d4ba637a">
 ]>
 
 <PLUGIN  name="&name;"
@@ -26,7 +26,8 @@
 
     <CHANGES>
     ##&name;  
-###2020.05.14c
+###2021.11.30
+###2021.11.30
  - Initial Beta Release
     </CHANGES>
 
@@ -60,20 +61,6 @@
     <!-- POST-INSTALL SCRIPT -->
     <FILE Run="/bin/bash">
         <INLINE>
-            <!-- WIDGET_OFF_FILE=/usr/local/emhttp/plugins/plexstreams/PlexStreams_dashboard.page.off
-            WIDGET_SETTING=`php -r 'exit(parse_ini_file("/boot/config/plugins/plexstreams/plexstreams.cfg", false)["DISPLAY_WIDGET"]);'`
-            if [[ -f "$WIDGET_OFF_FILE" || "$WIDGET_SETTING" == "0" ]]; then
-                rm /usr/local/emhttp/plugins/plexstreams/PlexStreams_dashboard.page.off
-                mv /usr/local/emhttp/plugins/plexstreams/PlexStreams_dashboard.page /usr/local/emhttp/plugins/plexstreams/PlexStreams_dashboard.page.off
-            fi
-            
-            NAV_OFF=/usr/local/emhttp/plugins/plexstreams/Plex_Streams.page.off
-            NAV_SETTING=`php -r 'exit(parse_ini_file("/boot/config/plugins/plexstreams/plexstreams.cfg", false)["DISPLAY_NAV"]);'`
-            if [[ -f "$NAV_OFF" || "$NAV_SETTING" == "0" ]]; then
-                rm /usr/local/emhttp/plugins/plexstreams/Plex_Streams.page.off
-                mv /usr/local/emhttp/plugins/plexstreams/Plex_Streams.page /usr/local/emhttp/plugins/plexstreams/Plex_Streams.page.off
-            fi -->
-
             echo ""
             echo "-----------------------------------------------------------"
             echo " &name; has been installed."

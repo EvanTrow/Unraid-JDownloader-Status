@@ -1,8 +1,8 @@
 Menu="SystemInformation"
-Name="Plex Streams"
+Name="JDownloader Status"
 Tag="download"
 Icon="download"
 Type="xmenu"
 Tabs="true"
-Title="Plex Streams"
+Title="JDownloader Status"
 ---

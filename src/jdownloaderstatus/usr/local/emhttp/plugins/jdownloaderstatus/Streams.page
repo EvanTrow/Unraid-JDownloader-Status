@@ -1,7 +1,0 @@
-Menu="Plex_Streams:1"
-Title="Streams"
-Tag="download"
----
-<?php
-include('/usr/local/emhttp/plugins/jdownloaderstatus/stream_display.php');
-?>

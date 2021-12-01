@@ -1,4 +1,4 @@
-<link type="text/css" rel="stylesheet" href="/plugins/plexstreams/spinner.css">
+<link type="text/css" rel="stylesheet" href="/plugins/jdownloaderstatus/spinner.css">
 <style>
     .caution {
         padding-left: 76px;
@@ -198,7 +198,7 @@
     }
 </script>
 <?php
-    $plugin = 'plexstreams';
+    $plugin = 'jdownloaderstatus';
     $docroot = $docroot ?: $_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp';
     $translations = file_exists("$docroot/webGui/include/Translations.php");
     include('/usr/local/emhttp/plugins/jdownloaderstatus/includes/config.php');
@@ -206,7 +206,7 @@
 
     if ($translations) {
         // add translations
-        $_SERVER['REQUEST_URI'] = 'plexstreams';
+        $_SERVER['REQUEST_URI'] = 'jdownloaderstatus';
         require_once "$docroot/webGui/include/Translations.php";
     } else {
         // legacy support (without javascript)
@@ -255,7 +255,7 @@
                                     (!is_null($stream['duration']) ? $stream['percentPlayed'] : '0') .
                                     '%"><div class="position">' . 
                                     (!is_null($stream['duration']) ?  '<span class="currentPositionHours">' .str_pad($stream['currentPositionHours'], 2, 0, STR_PAD_LEFT) . '</span>:<span class="currentPositionMinutes">' . str_pad($stream['currentPositionMinutes'], 2, 0, STR_PAD_LEFT) . '</span>:<span class="currentPositionSeconds">' .str_pad($stream['currentPositionSeconds'], 2, 0, STR_PAD_LEFT) .'</span>  / ' . $stream['lengthDisplay'] : '' ) .'</div></div>
-                                <div class="title">' . ($stream['type'] === 'video' ? '<a href="#" onclick="openBox(\'/plugins/plexstreams/movieDetails.php?details=' . urlencode($stream['key']) . '&host=' .urlencode($stream['@host']) . '\',\'Details\',600,900); return false;">' : '') . $stream['title'] . ($stream['type'] === 'video' ? '</a>' : '' ) . '<div class="status"><i class="fa fa-' .$stream['stateIcon']  . '" title="' .ucwords($stream['state']) .'"></i></div></div>
+                                <div class="title">' . ($stream['type'] === 'video' ? '<a href="#" onclick="openBox(\'/plugins/jdownloaderstatus/movieDetails.php?details=' . urlencode($stream['key']) . '&host=' .urlencode($stream['@host']) . '\',\'Details\',600,900); return false;">' : '') . $stream['title'] . ($stream['type'] === 'video' ? '</a>' : '' ) . '<div class="status"><i class="fa fa-' .$stream['stateIcon']  . '" title="' .ucwords($stream['state']) .'"></i></div></div>
                             </div>
                         </div>
                     </li>
@@ -267,13 +267,13 @@
             echo('<p style="text-align:center;font-style:italic;" id="no-streams">' . _('There are currently no active streams') . '</p>');
         }
     } else {
-        echo('<div class="caution"><i class="fa fa-exclamation-triangle"></i><div class="text">' . _('Please provide server details under Settings -> Network Services -> Plex Streams or') . ' <a href="/Settings/PlexStreams">' . _('click here') .'</a></div></div>');
+        echo('<div class="caution"><i class="fa fa-exclamation-triangle"></i><div class="text">' . _('Please provide server details under Settings -> Network Services -> JDownloader Status or') . ' <a href="/Settings/JDownloaderStatus">' . _('click here') .'</a></div></div>');
     }
 ?>
-<script src="/plugins/plexstreams/js/plex.js"></script>
+<script src="/plugins/jdownloaderstatus/js/plex.js"></script>
 <script>
     var title = $('title').html();
-    $('title').html(title.split('/')[0] + '/Plex Streams');
+    $('title').html(title.split('/')[0] + '/JDownloader Status');
     updateFullStreamInfo();
     setInterval(updateFullStreamInfo, 5000);
 </script>

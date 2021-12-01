@@ -1,0 +1,7 @@
+Menu="JDownloaderStatusTools:2"
+Title="Streams"
+Markdown="false"
+---
+<?php
+include('/usr/local/emhttp/plugins/jdownloaderstatus/download_display.php');
+?>

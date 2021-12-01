@@ -1,5 +1,5 @@
 <?php
-    $plugin = "plexstreams";
+    $plugin = "jdownloaderstatus";
     $plg_path = "/boot/config/plugins/" . $plugin;
     $cfg_file    = "$plg_path/" . $plugin . ".cfg";
 

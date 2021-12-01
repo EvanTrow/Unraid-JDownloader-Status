@@ -1,8 +1,8 @@
-Menu="PlexStreams"
-Title="Plex Stream Settings"
+Menu="JDownloaderStatus"
+Title="JDownloader Status Settings"
 Tag="download"
 ---
-<link type="text/css" rel="stylesheet" href="/plugins/plexstreams/spinner.css">
+<link type="text/css" rel="stylesheet" href="/plugins/jdownloaderstatus/spinner.css">
 <?php
 include('/usr/local/emhttp/plugins/jdownloaderstatus/includes/config.php');
 include('/usr/local/emhttp/plugins/jdownloaderstatus/includes/common.php');
@@ -23,29 +23,29 @@ if (!isset($cfg['CUSTOM_SERVERS'])) {
     $cfg['CUSTOM_SERVERS'] = "";
 }
 
-$pluginPath = '/usr/local/emhttp/plugins/plexstreams/';
+$pluginPath = '/usr/local/emhttp/plugins/jdownloaderstatus/';
 
-if ($cfg['DISPLAY_NAV'] === '0' && file_exists($pluginPath . 'Plex_Streams.page')) {
-    rename($pluginPath .'Plex_Streams.page', $pluginPath .'Plex_Streams.page.off');
-} else if ($cfg['DISPLAY_NAV'] === '1' && file_exists($pluginPath . 'Plex_Streams.page.off')) {
-    rename($pluginPath .'Plex_Streams.page.off', $pluginPath .'Plex_Streams.page');
+if ($cfg['DISPLAY_NAV'] === '0' && file_exists($pluginPath . 'JD_Downloads.page')) {
+    rename($pluginPath .'JD_Downloads.page', $pluginPath .'JD_Downloads.page.off');
+} else if ($cfg['DISPLAY_NAV'] === '1' && file_exists($pluginPath . 'JD_Downloads.page.off')) {
+    rename($pluginPath .'JD_Downloads.page.off', $pluginPath .'JD_Downloads.page');
 }
 
-if ($cfg['DISPLAY_WIDGET'] === '0' && file_exists($pluginPath . 'PlexStreams_dashboard.page')) {
-    rename($pluginPath .'PlexStreams_dashboard.page', $pluginPath .'PlexStreams_dashboard.page.off');
-} else if ($cfg['DISPLAY_WIDGET'] === '1' && file_exists($pluginPath . 'PlexStreams_dashboard.page.off')) {
-    rename($pluginPath .'PlexStreams_dashboard.page.off', $pluginPath .'PlexStreams_dashboard.page');
+if ($cfg['DISPLAY_WIDGET'] === '0' && file_exists($pluginPath . 'JDDownloads_dashboard.page')) {
+    rename($pluginPath .'JDDownloads_dashboard.page', $pluginPath .'JDDownloads_dashboard.page.off');
+} else if ($cfg['DISPLAY_WIDGET'] === '1' && file_exists($pluginPath . 'JDDownloads_dashboard.page.off')) {
+    rename($pluginPath .'JDDownloads_dashboard.page.off', $pluginPath .'JDDownloads_dashboard.page');
 }
 ?>
 
 <script>
 function clearToken() {
     document.getElementById('plex-token').value = '';
-    document.getElementById('plexstreams_settings').submit();
+    document.getElementById('jdownloaderstatus_settings').submit();
 }
 </script>
-<form markdown="1" name="plexstreams_settings" id="plexstreams_settings" method="POST" action="/update.php" target="progressFrame">
-<input type="hidden" name="#file" value="plexstreams/plexstreams.cfg" />
+<form markdown="1" name="jdownloaderstatus_settings" id="jdownloaderstatus_settings" method="POST" action="/update.php" target="progressFrame">
+<input type="hidden" name="#file" value="jdownloaderstatus/jdownloaderstatus.cfg" />
 <input type="hidden" id="COMMAND" name="#command" value="" />
 <input type="hidden" id="HOST" name="HOST" value="<?php echo($cfg['HOST']); ?>" />
 
@@ -83,7 +83,7 @@ function clearToken() {
     var OS_VERSION = '<?php echo(OS_VERSION); ?>';
     var PLUGIN_VERSION = '<?php echo(PLUGIN_VERSION); ?>';
 </script>
-<script src="/plugins/plexstreams/js/plex.js"></script>
+<script src="/plugins/jdownloaderstatus/js/plex.js"></script>
 <script>
   getServers('#hostcontainer', '<?php echo($cfg['HOST']) ?>');
 </script>
