@@ -36,4 +36,6 @@ else
     MD5=$(md5sum $PACKAGE 2>/dev/null|grep -Po '^\S+')
     sed -i -e "s#\(ENTITY\s*md5[^\"]*\).*#\1\"${MD5}\">#" "$PLG_FILE"
     rm -rf "$TMPDIR"
+
+    echo "md5: $MD5"
 fi

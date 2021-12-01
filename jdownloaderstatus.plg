@@ -12,7 +12,7 @@
   <!ENTITY emhttp     "/usr/local/emhttp/plugins/&name;">
   <!ENTITY plgPATH    "/boot/config/plugins/&name;">
   <!ENTITY plgNAME    "&name;-&version;-x86_64-1">
-  <!ENTITY md5        "df96b702f1f252f99803b677d4ba637a">
+  <!ENTITY md5        "0a38f81881a834f69055b1e1576b25dc">
 ]>
 
 <PLUGIN  name="&name;"
@@ -26,6 +26,7 @@
 
     <CHANGES>
     ##&name;  
+###2021.11.30
 ###2021.11.30
 ###2021.11.30
  - Initial Beta Release
